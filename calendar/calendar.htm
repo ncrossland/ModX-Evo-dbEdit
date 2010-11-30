@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>phatfusion : calendar</title>
+
+<link rel="stylesheet" href="main.css" type="text/css" media="all">
+
+<link rel="stylesheet" href="calendar.css" type="text/css" media="all">
+<style type="text/css" media="screen">
+	label {
+		float: left;
+		margin-right: 10px;
+		margin-top: 4px;
+	}
+	input, select {
+		float: left;
+		margin-right: 5px;
+	}
+	fieldset {
+		padding: 10px;
+		margin-bottom: 10px;
+	}
+</style>
+
+<script type="text/javascript" src="../js/mootools_1_2.js"></script>
+<script type="text/javascript" src="calendar.js"></script>
+
+<script type="text/javascript">
+	window.addEvent('domready', function(){
+		myCal1 = new Calendar({ date1: 'd/m/Y' });
+
+		myCal2 = new Calendar({ date2: 'Y-m-d' });
+		myCal3 = new Calendar({ date3: 'd/m/Y' }, { classes: ['alternate'], navigation: 2 });
+		myCal4 = new Calendar({ date4: 'd/m/Y' }, { direction: 7 });
+
+		myCal5 = new Calendar({
+		  date5: 'd/m/Y',
+		  date6: 'd/m/Y'
+		}, { pad: 2 });
+
+	});
+</script>
+
+</head>
+<body>
+
+	<div id="container">
+			<div id="header">
+			<div id="logo"><a href="../../index.htm">home</a><h1>phatfusion</h1></div>
+			<div class="nav">
+				<span><a href="../_docs/index.htm">docs</a></span><span>.</span>
+				<span><a href="../_demos/index.htm">demos</a></span><span>.</span>
+				<span><a href="http://phatfusion.googlecode.com">svn</a></span><span>.</span><span><a href="http://phatfusion.blogspot.com/">blog</a></span><span>.</span>
+				<span><a href="http://forum.phatfusion.net">forum</a></span>
+			</div>
+			<div class="desc">
+				<p class="strap">javascript &amp; mootools plugins.</p>
+			</div>
+			</div>
+
+
+		<h2>calendar</h2>
+		<a class="view" href="../_docs/index.htm">view docs</a><p class="version">version RC4.1</p>
+		<p class="description">Calendar is a Javascript class that adds accessible and unobtrusive date-pickers to your form elements.</p>
+		<p>for more demos see <a href="http://electricprism.com/aeron/calendar">http://electricprism.com/aeron/calendar</a></p>
+
+
+		<h3>features</h3>
+		<div>
+			<ul>
+				<li>Style-able and semantic XHTML</li>
+				<li>Highly configurable use of inputs and selects</li>
+				<li>Variable navigation options</li>
+				<li>Future / past calendar restrictions (and more)</li>
+				<li>Multi-calendar support (with padding)</li>
+				<li>Multi-lingual and fancy date formatting</li>
+			</ul>
+		</div>
+
+		<h3>basic example</h3>
+		<div id="basic">
+			<label for="date1">Date</label>
+			<input id="date1" name="date1" type="text" />
+			<div class="clear"></div>
+		</div>
+
+		<h3>advanced examples</h3>
+		<div id="advanced">
+			<fieldset>
+				<legend>only the following dates remain</legend>
+				<label for="date2">Date</label>
+				<select id="date2" name="date2">
+
+								<option value="2007-06-04">June 4, 2007</option>
+								<option value="2007-06-05">June 5, 2007</option>
+								<option value="2007-06-06">June 6, 2007</option>
+								<option value="2007-06-07">June 7, 2007</option>
+								<option value="2007-06-08">June 8, 2007</option>
+								<option value="2007-07-09">July 9, 2007</option>
+
+								<option value="2007-07-10">July 10, 2007</option>
+								<option value="2007-08-30">August 30, 2007</option>
+								<option value="2007-08-31">August 31, 2007</option>
+								<option value="2007-10-01">October 1, 2007</option>
+								<option value="2007-10-02">October 2, 2007</option>
+								<option value="2007-10-03">October 3, 2007</option>
+
+								<option value="2007-10-04">October 4, 2007</option>
+								<option value="2007-10-05">October 5, 2007</option>
+								<option value="2007-10-18">October 18, 2007</option>
+								<option value="2007-10-19">October 19, 2007</option>
+							</select>
+
+				<div class="clear"></div>
+			</fieldset>
+			<fieldset>
+				<legend>navigation by month or year</legend>
+				<label for="date3">Date</label>
+				<input id="date3" name="date3" type="text" />
+				<div class="clear"></div>
+			</fieldset>
+			<fieldset>
+				<legend>make a reservation (must be made a week in advance)</legend>
+				<label for="date4">Date</label>
+				<input id="date4" name="date4" type="text" />
+				<div class="clear"></div>
+			</fieldset>
+			<fieldset>
+				<legend>start date and end date (min 2 days between)</legend>
+				<label for="date5">Start Date</label>
+				<input id="date5" name="date5" type="text" />
+				<label for="date6">End Date</label>
+				<input id="date6" name="date6" type="text" />
+				<div class="clear"></div>
+			</fieldset>
+		</div>
+
+
+
+		<div id="footer">
+
+		</div>
+
+
+	</div>
+
+</body>
+</html>

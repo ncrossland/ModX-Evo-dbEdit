@@ -1,0 +1,272 @@
+/* Calendar: a Javascript class for Mootools that adds accessible and unobtrusive date pickers to your form elements <http://electricprism.com/aeron/calendar> */
+/* Default CSS for Calendar (navigation: 1), Copyright (c) 2007 Aeron Glemann <http://electricprism.com/aeron>, MIT Style License. */
+
+input.calendar,
+select.calendar {
+	width: 99px;
+}
+
+button.calendar {
+	background: url(calendar-icon.gif);
+	border: 0;
+	cursor: pointer;
+	float: left;
+	height: 20px;
+	margin-right: 6px;
+	width: 20px;
+}
+button.calendar:hover,
+button.calendar.active {
+	background-position: 0 20px;
+}
+
+div.calendar {
+	background: url(calendar.png);
+	height: 195px;
+	padding: 0 6px;
+	text-align: center;
+	width: 147px;
+}	
+	div.calendar div {
+		background: none !important;
+		/*cursor: move;*/
+		height: 185px;
+		overflow: hidden;
+		padding-top: 10px;
+		position: relative;
+		width: 147px;
+	}	
+	
+	div.calendar caption {
+		color: #333;
+		font: normal 12px/16px Arial, Helvetica, sans-serif;
+		padding-top: 6px;
+		text-align: center;
+		width: 100%;
+	}
+	div.calendar caption a {
+		cursor: pointer;
+		display: block;
+		height: 12px;
+		overflow: hidden;
+		position: absolute;
+		text-indent: -100px;
+		top: 17px;
+		width: 11px;
+	}
+	div.calendar caption a.prev {
+		background-image: url(calendar-prev.gif);
+		left: 0;
+	}
+	div.calendar caption a.next {
+		background-image: url(calendar-next.gif);
+		right: 0;
+	}
+	div.calendar caption a:hover {
+		background-position: 0 12px;
+	}
+	div.calendar caption span {
+		height: 25px;
+		position: relative;
+		text-align: center;
+	}
+	div.calendar caption span.month {
+		padding-right: 8px;
+	}
+	div.calendar caption span.month:after {
+		content: ',';
+	}
+
+	div.calendar table {
+		background: #FFF;
+		border: 0;
+		border-collapse: collapse;
+		border-spacing: 0;
+		cursor: default;
+		margin: 0 auto;
+		overflow: hidden;
+		width: 147px;
+	}
+	div.calendar td,
+	div.calendar th {
+		border: 0;
+		color: #498239;
+		font: normal 12px Arial, Helvetica, sans-serif;
+		height: 21px;
+		text-align: center;
+		width: 21px;
+	}
+	div.calendar td {
+		background: url(calendar-td.gif);
+		color: #FFF;
+		font-size: 11px;
+	}
+	div.calendar td.invalid {
+		color: #999;
+	}
+	div.calendar td.valid {
+		background: url(calendar-valid.gif);
+		color: #498239;
+		cursor: pointer;
+	}
+	div.calendar td.hilite {
+		background: url(calendar-hilite.gif);
+	}
+	div.calendar td.inactive {
+		background: url(calendar-td.gif) 0 100%;
+		color: #FFF;
+	}
+	div.calendar td.active,
+	div.calendar td.hover {
+		background: url(calendar-valid.gif) 0 100%;
+		color: #FFF;
+		cursor: pointer;
+	}
+	
+	
+	
+	
+
+	input.alternate, select.alternate {
+		width:99px;
+		float:left;
+	}
+	button.alternate {
+		background:transparent url(calendar-icon.gif) repeat scroll 0% 0%;
+		border:0pt none;
+		cursor:pointer;
+		float:left;/**/
+		height:20px;
+		margin-right:6px;
+		width:20px;
+	}
+	button.alternate:hover, button.alternate.active {
+		background-position:0pt 20px;
+	}
+	div.alternate {
+		background:transparent url(calendar.png) repeat scroll 0% 0%;
+		height:195px;
+		padding:0pt 6px;
+		text-align:center;
+		width:147px;
+	}
+	div.alternate * {
+		margin:0pt;
+		padding:0pt;
+	}
+	div.alternate div {
+		background:transparent none repeat scroll 0% 0% !important;
+		cursor:move;
+		height:185px;
+		overflow:hidden;
+		padding-top:10px;
+		position:relative;
+		width:147px;
+	}
+	div.alternate caption {
+		-x-system-font:none;
+		color:#333333;
+		font-family:Arial,Helvetica,sans-serif;
+		font-size:12px;
+		font-size-adjust:none;
+		font-stretch:normal;
+		font-style:normal;
+		font-variant:normal;
+		font-weight:normal;
+		line-height:16px;
+		overflow:hidden;
+		text-align:center;
+		width:100%;
+	}
+	div.alternate caption a {
+		cursor:pointer;
+		display:block;
+		height:12px;
+		overflow:hidden;
+		position:absolute;
+		text-indent:-100px;
+		top:17px;
+		width:11px;
+	}
+	div.alternate caption a.prev {
+		background-image:url(calendar-prev.gif);
+		left:0pt;
+	}
+	div.alternate caption a.next {
+		background-image:url(calendar-next.gif);
+		right:0pt;
+	}
+	div.alternate caption a:hover {
+		background-position:0pt 12px;
+	}
+	div.alternate caption span {
+		padding-top:6px;
+		position:relative;
+		text-align:center;
+	}
+	div.alternate caption span.month {
+		float:left;
+		width:84px;
+	}
+	div.alternate caption span.month:after {
+		content:'';
+	}
+	div.alternate caption span a {
+		top:8px;
+	}
+	div.alternate caption span.year {
+		float:right;
+		width:63px;
+	}
+	div.alternate table {
+		background:#FFFFFF none repeat scroll 0% 0%;
+		border:0pt none;
+		border-collapse:collapse;
+		border-spacing:0pt;
+		cursor:default;
+		margin:0pt auto;
+		overflow:hidden;
+		width:147px;
+	}
+	div.alternate td, div.alternate th {
+		-x-system-font:none;
+		border:0pt none;
+		color:#498239;
+		font-family:Arial,Helvetica,sans-serif;
+		font-size:12px;
+		font-size-adjust:none;
+		font-stretch:normal;
+		font-style:normal;
+		font-variant:normal;
+		font-weight:normal;
+		height:21px;
+		line-height:normal;
+		text-align:center;
+		width:21px;
+		background:white;
+	}
+	div.alternate td {
+		background:transparent url(calendar-td.gif) repeat scroll 0% 0%;
+		color:#FFFFFF;
+		font-size:11px;
+	}
+	div.alternate td.invalid {
+		color:#999999;
+	}
+	div.alternate td.valid {
+		background:transparent url(calendar-valid.gif) repeat scroll 0% 0%;
+		color:#498239;
+		cursor:pointer;
+	}
+	div.alternate td.hilite {
+		background:transparent url(calendar-hilite.gif) repeat scroll 0% 0%;
+	}
+	div.alternate td.inactive {
+		background:transparent url(calendar-td.gif) repeat scroll 0pt 100%;
+		color:#FFFFFF;
+	}
+	div.alternate td.active, div.alternate td.hover {
+		background:transparent url(calendar-valid.gif) repeat scroll 0pt 100%;
+		color:#FFFFFF;
+		cursor:pointer;
+	}

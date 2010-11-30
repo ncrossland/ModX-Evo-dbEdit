@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>phatfusion : Calendar</title>
+
+<link rel="stylesheet" href="../_css/main.css" type="text/css" media="all">
+
+<script type="text/javascript" src="../_core/mootools-1.2-core-nc.js"></script>
+
+</head>
+<body>
+
+	<div id="container">
+			<div id="header">
+			<div id="logo"><a href="../../index.htm">home</a><h1>phatfusion</h1></div>
+			<div class="nav">
+				<span><a href="../_docs/index.htm">docs</a></span><span>.</span>
+				<span><a href="../_demos/index.htm">demos</a></span><span>.</span>
+				<span><a href="http://phatfusion.googlecode.com">svn</a></span><span>.</span><span><a href="http://phatfusion.blogspot.com/">blog</a></span><span>.</span>
+				<span><a href="http://forum.phatfusion.net">forum</a></span>
+			</div>
+			<div class="desc">
+				<p class="strap">javascript &amp; mootools plugins.</p>
+			</div>
+			</div>
+		
+		
+		<h2>Calendar</h2>
+		<p class="version">version RC4.1</p>
+		<p class="description">Calendar is a Javascript class that adds accessible and unobtrusive date-pickers to your form elements.</p>
+		<p>for more options see <a href="http://electricprism.com/aeron/calendar">http://electricprism.com/aeron/calendar</a></p>
+		
+		
+		<h3>syntax:</h3>
+		<pre><code>var myCal = new Calendar(options);</code></pre>
+		
+		<h3>arguments:</h3>
+		<ol>
+			<li>options - (object)</li>
+		</ol>
+
+		<h3>options:</h3>
+		<dl>
+			<dt>blocked</dt>
+			<dd>(array) An array of blocked (disabled) dates in the following format: 'day month year'. The syntax is similar to cron: the values are separated by spaces and may contain * (asterisk) - (dash) and , (comma) delimiters. For example blocked: ['1 1 2007'] would disable January 1, 2007; blocked: ['* 1 2007'] would disable all days (wildcard) in January, 2007; blocked: ['1-10 1 2007'] would disable January 1 through 10, 2007; while blocked: ['1,10 1 2007'] would disable January 1 and 10, 2007. In combination: blocked: ['1-10,20,22,24 1-3 *'] would disable 1 through 10, plus the 22nd and 24th of January through March for every (wildcard) year. There is an optional additional value which is day of the week (0 - 6 with 0 being Sunday). For example blocked: ['0 * 2007 0,6'] would disable all weekends (saturdays and sundays) in 2007.</dd>
+			
+			<dt>classes</dt>
+			<dd>(array)  An array of 12 CSS classes that are applied to the calendar construct: calendar, prev, next, month, year, today, invalid, valid, inactive, active, hover, hilite. It is not necessary to pass all 11 classes in the array: if you only wanted to change the 1st class you would set classes: ['alternate']; if you only wanted to change the 1st and 4th classes you would need to set classes: ['alternate', '', '', 'mes']. The first class, by default 'calendar', is applied to the div that contains the calendar element, the calendar button and the input or select it is appended to. The 'hilite' class is applied to all days between 2 or more selected dates in multi-calendar functionality.</dd>
+			
+			<dt>days</dt>
+			<dd>(array) An array of the 7 names of the days of the week, starting with sunday.</dd>
+			
+			<dt>direction </dt>
+			<dd>(number) A positive or negative integer that determines the calendar's direction: n (a positive number) the calendar is future-only beginning at n days after today; -n (a negative number) the calendar is past-only ending at n days before today; 0 (zero) the calendar has no future or past restrictions (default). Note if you would like the calendar to be directional starting from today-as opposed to (1) tomorrow or (-1) yesterday-use a positive or negative fraction, such as direction: .5 (future-only, starting today).</dd>
+			
+			<dt>draggable </dt>
+			<dd>(boolean) A boolean value, true or false, to indicate if the calendar element will be draggable-useful in case the calendar obstructs (or is obstructed by) some other element on the page.</dd>
+			
+			<dt>months </dt>
+			<dd>(array) An array of the 12 names of the month, starting with january.</dd>
+			
+			<dt>navigation </dt>
+			<dd>(number) An integer-0, 1 or 2-indicating which navigation method the class will use: traditional navigation (1) where left and right arrows allow the user to navigate by month (default); improved navigation (2) where the user can navigate by month or year; and static navigation (0) which is actually no navigation at all.</dd>
+			
+			<dt>offset </dt>
+			<dd>(number) An integer that indicates the first day of the week, with 0 being Sunday (default).</dd>
+			
+			<dt>pad </dt>
+			<dd>(number) An integer, the minimum number of days between calendars with multi-calendar functionality. For example: 1 (default) would enforce multiple calendars to space at least 1 day between picked dates; 7 would enforce a space of at least 1 week; while 0 (no padding) would allow multiple calendars to occupy the same date.</dd>
+			
+			<dt>tweak </dt>
+			<dd>(object) An object with { x: 0, y: 0} values that will "tweak" the calendar's placement on the page by x number of pixels horizontally and y number of pixels vertically.</dd>
+		</dl>
+		
+		<h3>events:</h3>
+		<dl>
+			<dt>onHideStart</dt>
+			<dd>&nbsp;</dd>
+			
+			<dt>onHideComplete</dt>
+			<dd>&nbsp;</dd>
+			
+			<dt>onShowStart</dt>
+			<dd>&nbsp;</dd>
+			
+			<dt>onShowComplete </dt>
+			<dd>&nbsp;</dd>
+		</dl>
+		
+		<h3>returns:</h3>
+		<ul>
+			<li>(object) a new calendar instance.</li>
+		</ul>
+		
+		<h3><a href="../_demos/calendar.htm">view demo</a>example:</h3>
+		<h4>HTML</h4>
+		<pre><code>
+&lt;input type="text" name="date" id="date" value="" /&gt;
+		</code></pre>
+		
+		<h4>JavaScript</h4>
+		<pre><code>
+var myCal = new Calendar({ date: 'd/m/Y' });
+		</code></pre>
+		
+		<h3>requirements:</h3>
+		<div>
+			<ul>
+				<li>mootools v1.2 core</li>
+				<li>Drag (if draggable is true)</li>
+			</ul>
+		</div>
+		
+		<div id="footer">
+			
+		</div>
+		
+		
+	</div>
+
+</body>
+</html>
