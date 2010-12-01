@@ -235,8 +235,8 @@ if(IN_MANAGER_MODE!="true") die("<b>INCLUDE_ORDERING_ERROR</b><br /><br />Please
 				foreach($values as $k=>$v){
 					$selected = ($v==$row[$fld])?" checked=\"checked\"":"";
 					$tableRows .= ($type=='checkbox') ?
-						"<input type=\"checkbox\" value=\"{$v}\"$selected>&nbsp;{$k}\n" :
-						"<input type=\"radio\" value=\"{$v}\"$selected>&nbsp;{$k}\n";
+						"<input type=\"checkbox\" name=\"fld_{$fld}[]\" value=\"{$v}\"$selected>&nbsp;{$k}\n" :
+						"<input type=\"radio\" name=\"fld_{$fld}\" value=\"{$v}\"$selected>&nbsp;{$k}\n";
 				}
 				break;
 			case "password":
@@ -373,9 +373,3 @@ if($date_script){
 <input type="submit" name="save" style="display:none;">
 </div>
 </form>
-
-<?php if (isset($row['validated']) && $row['validated'] == '0') { ?>
-	
-<p><a href="https://sheffieldismyplanet.co.uk/promise/validate/resend/<? echo $row['id']; ?>" target="_blank">Resend confirmation e-mail to <strong><? echo $row['email']; ?></strong></a></p>
-
-<?php } ?>
