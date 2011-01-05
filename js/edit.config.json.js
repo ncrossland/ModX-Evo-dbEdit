@@ -116,7 +116,12 @@ dbObjectClass = new Class({
 			//add field to trash selectbox
 			if(!itm.isKey){
 				o = opt.clone(); o.set({'value':fld,'text':fld});
-				if(this.deletedField==fld) o.set('checked','checked');
+				if(this.dbObject.deletedField==fld) {
+					o.set('selected','selected');
+					$('trash_deleteVal').set( {'value':this.dbObject.deletedValue} );
+					$('trash_undeleteVal').set( {'value':this.dbObject.enabledValue} );
+					$('trash_props').removeClass('hide');
+				}
 				o.inject($('trash_field'));
 				t6=td.clone().inject(r);
 			}else{

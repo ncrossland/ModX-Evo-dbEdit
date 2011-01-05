@@ -173,7 +173,7 @@ if( $dba==107 ){
 
 <tr>
 <td scope="row">Trash Indicator Field</td>
-<td><select name="trash_field" id="trash_field" onChange="trashChange(this);"></select><div id="trash_props" class="hide"> Deleted Value: <input type="text" name="trash_deleteVal" size="10" maxlength="20" value="" /> Undeleted Value: <input type="text" name="trash_undeleteVal" size="10" maxlength="20" value="" /></div>
+<td><select name="trash_field" id="trash_field" onChange="trashChange(this);"></select><div id="trash_props" class="hide"> Deleted Value: <input type="text" name="trash_deleteVal" id="trash_deleteVal" size="10" maxlength="20" value="" /> Undeleted Value: <input type="text" name="trash_undeleteVal" id="trash_undeleteVal" size="10" maxlength="20" value="" /></div>
 </td>
 <td></td>
 </tr>
