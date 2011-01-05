@@ -40,7 +40,7 @@ function ajaxLoadConfig(el){
 	if(DBEDIT_DB_ID) q = '&db='+DBEDIT_DB_ID
 	else q = (tablename) ? '&tbl='+tablename : '&tbl='+DBEDIT_TABLE_NAME
 
-	img = new Element('img',{'src':'../assets/modules/dbedit/loader.gif','align':'absmiddle'});
+	img = new Element('img',{'src':'../assets/modules/dbedit/images/loader.gif','align':'absmiddle'});
 	$('wait-for-me').getFirst('span').set({'text':'Loading Configuration','class':'waiting'})
 
 	img.inject($('wait-for-me'),'top');

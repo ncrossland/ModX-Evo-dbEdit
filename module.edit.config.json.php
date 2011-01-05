@@ -79,7 +79,7 @@ EOFD;
 ?>
 <div id="error-reponse"></div>
 <!-- FORM -->
-<p><img src='media/style/<?php echo $manager_theme; ?>images/icons/dbedit.gif' align="absmiddle" alt="dBedit" title="" width='32' height='32' />&nbsp; Here you can add a new configuration to manage a database table. The database table must already exists and be accessible by ModX. </p>
+<p><img src="<?php echo $site_url; ?>/assets/modules/dbedit/images/db.gif" align="absmiddle" alt="dBedit" title="" width='32' height='32' />&nbsp; Here you can add a new configuration to manage a database table. The database table must already exists and be accessible by ModX. </p>
 <br />
 <form name="mutate" id="form_mutate" method="POST" action="index.php?a=112&dba=<?php echo $dba==107?'109':'110'; ?>&id=<?php echo $module_id; ?>">
 <input type="hidden" name="json_data" id="json_data" value="" />
