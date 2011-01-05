@@ -86,7 +86,7 @@ if(IN_MANAGER_MODE!="true") die("<b>INCLUDE_ORDERING_ERROR</b><br /><br />Please
 		//combine filters into one statement
 		if(!empty($search_sql)) $where_sql .= (!empty($where_sql)?' AND ':'') . $search_sql;
 		//Make sure the keyfield is included in the query (otherwise links won't work)
-		$sql_fields = ((!in_array($dbConfig['keyField'],$col_fields))? ','.$dbConfig['keyField']:'') . implode(',',$col_fields);
+		$sql_fields = ((!in_array($dbConfig['keyField'],$col_fields))? $dbConfig['keyField'] .', ' :'') . implode(',',$col_fields);
 		//get db resource
 		$ds = $modx->db->select($sql_fields, $dbConfig['tableName'] ,$where_sql,str_replace('=',' ',$dbConfig['sort']));
 	}
