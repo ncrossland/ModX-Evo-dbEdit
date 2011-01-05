@@ -231,12 +231,15 @@ if(IN_MANAGER_MODE!="true") die("<b>INCLUDE_ORDERING_ERROR</b><br /><br />Please
 				$tableRows .= "</select>\n";
 				break;
 			case "checkbox":
+				foreach($values as $k=>$v){
+					$selected = ($v==$row[$fld])?" checked=\"checked\"":"";
+					$tableRows .= "<input type=\"checkbox\" name=\"fld_{$fld}[]\" value=\"{$v}\"$selected>&nbsp;{$k}\n";
+				}
+				break;
 			case "radio":
 				foreach($values as $k=>$v){
 					$selected = ($v==$row[$fld])?" checked=\"checked\"":"";
-					$tableRows .= ($type=='checkbox') ?
-						"<input type=\"checkbox\" name=\"fld_{$fld}[]\" value=\"{$v}\"$selected>&nbsp;{$k}\n" :
-						"<input type=\"radio\" name=\"fld_{$fld}\" value=\"{$v}\"$selected>&nbsp;{$k}\n";
+					$tableRows .= "<input type=\"radio\" name=\"fld_{$fld}\" value=\"{$v}\"$selected>&nbsp;{$k}\n";
 				}
 				break;
 			case "password":
