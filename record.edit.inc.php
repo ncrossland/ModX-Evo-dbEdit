@@ -373,9 +373,3 @@ if($date_script){
 <input type="submit" name="save" style="display:none;">
 </div>
 </form>
-
-<?php if (isset($row['validated']) && $row['validated'] == '0') { ?>
-	
-<p><a href="https://sheffieldismyplanet.co.uk/promise/validate/resend/<? echo $row['id']; ?>" target="_blank">Resend confirmation e-mail to <strong><? echo $row['email']; ?></strong></a></p>
-
-<?php } ?>
