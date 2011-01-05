@@ -199,9 +199,9 @@ if(IN_MANAGER_MODE!="true") die("<b>INCLUDE_ORDERING_ERROR</b><br /><br />Please
 				$tableRows .= "<textarea cols=\"60\" rows=\"10\" name=\"fld_".$fld."\">".$row[$fld]."</textarea>";
 				break;
 			case "multiselect":
-			$multi_select = " multiple=\"multiple\"";
-			$brackets = '[]';
-			$row[$fld] = explode(',',$row[$fld]);
+				$multi_select = " multiple=\"multiple\"";
+				$brackets = '[]';
+				$row[$fld] = explode(',',$row[$fld]);
 			case "select":
 				$tableRows .= "<select name=\"fld_{$fld}{$brackets}\"{$multi_select}{$jsEvent}>\n";
 				if(is_array(current($values))){
