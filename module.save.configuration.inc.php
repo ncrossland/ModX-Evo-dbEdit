@@ -18,11 +18,11 @@
 
 	function findField($fieldName) {
 		global $dbFields;
-		if(is_array($fieldName)):
+		if(is_array($fieldName)) {
 			foreach($fieldName as $name)
 				if(!findField($name)) return false;
 			return $fieldName;
-		endif;
+		}
 		return (isset($dbFields[$fieldName]))?$fieldName:false;
 	}
 
@@ -50,11 +50,11 @@
 	global $dbFields;
 	if(!$dbFields) die('Could not verify table data.');
 
-	if(!is_array($dbConfig) || !isset($dbConfig['tableName'])):
+	if(!is_array($dbConfig) || !isset($dbConfig['tableName'])) {
 		$ok=false;
-	else:
+	} else {
 		//do some validation...
-		foreach( $dbConfig['fields'] as $fld_name => $props ):
+		foreach( $dbConfig['fields'] as $fld_name => $props ) {
 			//check that field exists in table
 			$ok = (isset($dbFields[$fld_name]))?1:0;
 			//check that (db) data type is the same (otherwise someone is tampering?)
@@ -66,49 +66,49 @@
 			//* debug */ print __LINE__.': <pre>'.print_r($props,true) .'</pre><br />';
 			
 			//check that default values are appropriate
-			if($ok && !empty($props['default']) ):
-				if ($props['type']=='date' || $props['type']=='time'):
+			if($ok && !empty($props['default']) ) {
+				if ($props['type']=='date' || $props['type']=='time') {
 					# date/time field, check for invalid default
 					$t = strtotime($props['default']);
 					$ok = ( ($t!=-1 && $t!=false) ) ?1:0;
-				endif;
+				}
 				//* debug */ print __LINE__.': <pre>'.print_r($ok,true) .'</pre><br />';
 				
-				if($ok && in_array(strtoupper($props['type']),$modx->db->dataTypes['numeric'])):
+				if($ok && in_array(strtoupper($props['type']),$modx->db->dataTypes['numeric'])) {
 					# numeric field, check for non-numeric default
 					$ok = ( !is_numeric($props['default']) )?0:1;
-				endif;
+				}
 				//* debug */ print __LINE__.': <pre>'.print_r($ok,true) .'</pre><br />';
-			endif;
+			}
 			//* debug */ print __LINE__.': <pre>'.print_r($ok,true) .'</pre><br />';
-		endforeach;
-	endif;
+		}
+	}
 
-	if($ok):
+	if($ok) {
 		//need to validate all values here!!
 		$insertFields['name'] = $modx->db->escape($dbConfig['title']);
 		$insertFields['comment'] = $modx->db->escape($dbConfig['description']);
 		$insertFields['config'] = $modx->db->escape(serialize($dbConfig));
 		//update or new?
-	endif;
+	}
 	
-	if ($dba==109):
+	if ($dba==109) {
 		$ok = $modx->putIntTableRow($insertFields,$dbe_config_table)?1:0;
-	elseif(($dba==119 || $dba==110) && !empty($db_id) ):
+	} elseif( ($dba==119 || $dba==110) && !empty($db_id) ) {
 		$ok = $modx->updIntTableRow($insertFields,$dbe_config_table,"recID=".$db_id)?1:0;
-	else:
+	} else {
 		$msg = "Wrong save action encountered!<br />";
-	endif;
+	}
 
-	if ($ok):
+	if ($ok) {
 		$msg .= "Configuration for \"".$dbConfig['moduleName']."\" saved succesfully.";
 		$_SESSION['dbedit_message'] = array('succes',$msg);
 		header("location: index.php?a=".$_REQUEST['a']."&id=".$module_id);
 		exit;
-	else:
+	} else {
 		//* debug */ print __LINE__.': <pre>'.print_r($dbConfig,true) .'</pre><br />';
 		$msg .=  "Unable to save configuration. Reason is: <br />".$modx->db->getLastError();
-	endif;
+	}
 
 //somehow make this possible???
 //$dbConfig['list']['Select'] = "recID,concat(FirstName,\" \",LastName) as FullName,artistCode,Type";
