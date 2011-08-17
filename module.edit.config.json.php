@@ -15,7 +15,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html charset="utf-8" />
-	<title>MODx dbEdit</title>
+	<title>MODx dbEdit – <?php echo $mod_name; ?></title>
 	<link rel="stylesheet" type="text/css" href="<?php echo $site_url; ?>manager/media/style/<?php echo $manager_theme ? "$manager_theme":""; ?>style.css" />
 	<?php include(dirname(__FILE__).'/styles.inc.php'); ?>
 	<script type="text/javascript" src="<?php echo $site_url; ?>/assets/modules/dbedit/js/mootools_1_2.js"></script>

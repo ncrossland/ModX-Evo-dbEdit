@@ -79,7 +79,7 @@ echo $cm->render();
 	<ul class="actionButtons">
 		<li id="Button1">
 			<a onclick="document.location.href='index.php?a=2';">
-			<img src="media/style/<?php echo $manager_theme; ?>images/icons/cancel.png" alt=""> Close dbEdit</a>
+			<img src="media/style/<?php echo $manager_theme; ?>images/icons/cancel.png" alt=""> Close <?php echo $mod_name; ?></a>
 		</li>
 		<li id="Button2">
 			<a onclick="document.location.href='index.php?a=112&id=<?php echo $module_id; ?>&dba=107';">

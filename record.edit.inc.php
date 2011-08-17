@@ -3,7 +3,7 @@
 /**
  * <?php
 /**
- * Edit record script for dbEdit Tabel Editor module.
+ * Edit record script for dbEdit Table Editor module.
  *
  * @package dbEdit Table Editor
  * @version 1.0

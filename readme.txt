@@ -15,7 +15,7 @@ You can now access the module under the Modules tab.
 
 
 Advanced Settings:
-Currently there are only two built-in advanced setting:
+Currently there are only three built-in advanced setting:
 
 	select_sql
 		Instead of the 'list' checkboxes you can use an SQL statement for the main records 	list. Field (or alias) names will be used for the column headings with underscores translated to spaces. To be able to use the record filter with select_sql there are a couple of 'placeholders' you must use inside the SQL statement:
@@ -31,7 +31,12 @@ Currently there are only two built-in advanced setting:
 		
 		
 	hide_add
-		If set to true, this will hide the "new record	" button. 	
+		If set to true, this will hide the "New Record" button. 	
+
+
+	hide_export
+		If set to true, this will hide the "CSV Export" button. 	
+
  	
  	You can also create your own advanced settings. These will not have any effect in dbEdit itself without extra coding but I have used them on occasion as extra parameters for snippets. .
  	
