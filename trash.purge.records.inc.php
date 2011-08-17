@@ -35,7 +35,7 @@ if(IN_MANAGER_MODE!="true") die("<b>INCLUDE_ORDERING_ERROR</b><br /><br />Please
 			$msg .= " permanently removed from the trash bin.";
 		}else{
 			$ok = false;
-			$msg  = "Purge operation failed. Database replied:<br />";\
+			$msg  = "Purge operation failed. Database replied:<br />";
 			$msg .= $modx->db->getLastError();
 		}
 

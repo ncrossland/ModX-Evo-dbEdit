@@ -123,7 +123,7 @@ include($basePath.$mod_path.'/header.inc.php');
 <div class="sectionHeader"><img src='media/images/misc/dot.gif' alt="." />&nbsp;Save Configuration</div><div class="sectionBody">
 <?php print $msg; ?>
 <ul>
-	<li><a href="<?php echo $moduleHomeUrl; ?>">Return to dbEdit module</a></li>
+	<li><a href="<?php echo $moduleHomeUrl; ?>">Return to <?php echo $mod_name; ?> module</a></li>
 </ul>
 </div>
 <?php include($basePath.$mod_path.'/footer.inc.php'); ?>
