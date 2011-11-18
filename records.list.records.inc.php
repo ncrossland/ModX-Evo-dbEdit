@@ -90,6 +90,7 @@ if(IN_MANAGER_MODE!="true") die("<b>INCLUDE_ORDERING_ERROR</b><br /><br />Please
 		//get db resource
 		$ds = $modx->db->select($sql_fields, $dbConfig['tableName'] ,$where_sql,str_replace('=',' ',$dbConfig['sort']));
 	}
+	$_SESSION['dbe_where_sql'] = $where_sql;
 
 	//setup the datagrid
 	include_once $manager_path."includes/controls/datagrid.class.php";
