@@ -157,7 +157,7 @@ print $js_script;
 		<table border="0" style="width:100%">
 			<tr valign="middle">
 			<td><?php if (isset($dbConfig['settings']['hide_add']) && $dbConfig['settings']['hide_add']) { echo '&nbsp;'; } else { ?> <a class="searchtoolbarbtn" href="<?php echo $dbeHomeUrl; ?>&ra=insert"><img src="media/style/<?php echo $manager_theme; ?>images/icons/add.png"  align="absmiddle" /> New Record</a> <?php } ?>
-			<?php if (isset($dbConfig['settings']['hide_export']) && $dbConfig['settings']['hide_export']) { echo '&nbsp;'; } else { ?> <a class="searchtoolbarbtn" href="<?php echo $base_url.$mod_path; ?>export.php?export=<?php echo str_replace('modx_courses_', '', $dbConfig['tableName']);?>"><img src="media/style/<?php echo $manager_theme; ?>images/icons/ed_save.gif"  align="absmiddle" /> CSV Export</a> <?php } ?></td>
+			<?php if (isset($dbConfig['settings']['hide_export']) && $dbConfig['settings']['hide_export']) { echo '&nbsp;'; } else { ?> <a class="searchtoolbarbtn" href="<?php echo $base_url.$mod_path; ?>export.php?export=<?php echo $dbConfig['tableName'];?>"><img src="media/style/<?php echo $manager_theme; ?>images/icons/ed_save.gif"  align="absmiddle" /> CSV Export</a> <?php } ?></td>
 			<td nowrap="nowrap">
 
 				<table border="0" style="float:right;"><tr>
