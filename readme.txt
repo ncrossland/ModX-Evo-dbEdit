@@ -1,4 +1,4 @@
-2INSTALLATION:
+INSTALLATION:
 
 1. Create a new module. Give it a name such as "dbEdit" (this is what will appear in the menu under "Modules").
 2. Copy the contents of dbedit.module.php.txt to the Module Code box
