@@ -21,19 +21,22 @@ if ($_SESSION['mgrValidated'] != 1) {
 	die('<h1>ERROR:</h1><p>Please use the MODx Content Manager instead of accessing this file directly.</p>');
 }
 
-//
 if (isset($_GET['export'])) {
 
 	// Connect to MODX database.
 	$link = mysql_connect($database_server, $database_user, $database_password);
+	if (!$link) {
+		die('Could not connect: '.mysql_error());
+	}
 	mysql_select_db(trim($dbase, '`'));
 
 	// Get data records from table.
 	$export = mysql_real_escape_string(strip_tags($_GET['export']));
+	$where = isset($_SESSION['dbe_where_sql']) ? ' WHERE '.$_SESSION['dbe_where_sql'].' ' : '';
 
 	// Don't export files with MODX table prefix
 	if (strstr($export, $table_prefix) != $export) {
-		$result = mysql_query('SELECT * FROM '.$export.' ORDER BY id ASC');
+		$result = mysql_query('SELECT * FROM '.$export.$where.' ORDER BY id ASC');
 
 		$exportTable = array();
 		while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
