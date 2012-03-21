@@ -61,9 +61,7 @@ if (isset($_GET['export'])) {
 		header('Pragma: public');
 		header('Expires: 0');
 		header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-		header('Content-Type: application/force-download');
-		header('Content-Type: application/octet-stream');
-		header('Content-Type: application/download');
+		header('Content-Type: text/comma-separated-values');
 		header('Content-Disposition: attachment;filename='.$export.'.csv ');
 		header('Content-Description: CSV Export');
 		header('Content-Transfer-Encoding: binary ');
