@@ -29,14 +29,20 @@ Currently there are only three built-in advanced setting:
  		SELECT recid, product_name as name ,description FROM `products` WHERE cat_id=122 {WHERE} {FILTER}
  		with a filter this would result in "SELECT recid, name ,description FROM `products` WHERE cat_id=122 AND deleted='0' HAVING name LIKE '%jacket%'
 		
-		
 	hide_add
 		If set to true, this will hide the "New Record" button. 	
-
 
 	hide_export
 		If set to true, this will hide the "CSV Export" button. 	
 
- 	
+	hide_delete
+		If set to true, this will hide the "Delete" button.
+
+    view_only
+		If set to true, open the Record window in view only mode.
+
+    pdf_export
+		If set to true, add a PDF export button for each row.
+       
  	You can also create your own advanced settings. These will not have any effect in dbEdit itself without extra coding but I have used them on occasion as extra parameters for snippets. .
  	

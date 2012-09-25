@@ -45,31 +45,12 @@ if(IN_MANAGER_MODE!="true") die("<b>INCLUDE_ORDERING_ERROR</b><br /><br />Please
 		$ok = false;
 	}
 
-	if( $ok==true ){
-		$_SESSION['dbedit_message'] = array('succes',$msg);
-		header("location: {$dbeHomeUrl}");
-		exit;
+	if ($ok == true) {
+		$_SESSION['dbedit_message'] = array('succes', $msg);
+	} else {
+		$_SESSION['dbedit_message'] = array('failure', $msg);
 	}
+
+header("location: {$dbeHomeUrl}");
+exit;
 ?>
-
-
-
-<h1><?php echo $mod_name; ?></h1>
-<div id="actions">
-	<ul class="actionButtons">
-		<li id="Button1">
-			<a onclick="document.location.href='<?php echo $moduleHomeUrl; ?>';">
-			<img src="media/style/<?php echo $manager_theme; ?>images/icons/cancel.png" alt="return"> Return</a>
-		</li>
-	</ul>
-</div>
-
-<div class="sectionHeader">Trash bin for <?php echo $dbConfig['title'];?></div>
-<div class="sectionBody">
-	<?php if($ok==false) echo "<h4>An error occurred</h4>"; ?>
-	<p style="margin-bottom:15px;"><?php echo $msg; ?></p>
-	<ul>
-		<li><a href="index.php?id=<?php echo $dbeHomeUrl; ?>&ra=opentrash">Return to Trash Bin</a></li>
-		<li><a href="index.php?id=<?php echo $dbeHomeUrl; ?>">Return to <?php print $dbConfig['moduleName']; ?></a></li>
-	</ul>
-</div>

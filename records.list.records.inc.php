@@ -107,12 +107,23 @@ if(IN_MANAGER_MODE!="true") die("<b>INCLUDE_ORDERING_ERROR</b><br /><br />Please
 	$grd->columns           = implode(',',$col_headers).',Delete';
 	$grd->colWidths         = ((in_array($dbConfig['keyField'],$col_fields))?"30":'').str_repeat(',',$col_count).'30';
 	$grd->colAligns         = str_repeat(',',$col_count).'center';
+	if ((isset($dbConfig['settings']['pdf_export']) && $dbConfig['settings']['pdf_export'])) {
+		$grd->columns .= ',PDF';
+	}
+	if (!(isset($dbConfig['settings']['hide_delete']) && $dbConfig['settings']['hide_delete'])) {
+		$grd->columns .= ',Delete';
+	}
 	//compute templates/types
 	for($f=0;$f<$col_count;$f++)
 			$col_types[] = "template:<a style='display:block;' href=\"".$dbeHomeUrl."&rn=[+".$key_field."+]\" title=\"Click to view record\">[+value+]</a>";
 
-	$col_types[] = "template:<a href=\"#\" onClick=\"deleteRecord('[+".$key_field."+]')\"><img src=\"media/style/{$manager_theme}images/icons/delete.png\"  align=\"absmiddle\" alt=\"delete\" /></a>";
-	$grd->colTypes = implode('||',$col_types);
+	if ((isset($dbConfig['settings']['pdf_export']) && $dbConfig['settings']['pdf_export'])) {
+		$col_types[] = "template:<a href=\"/assets/modules/dbedit/exportpdf.php?export=" . $db_id . "&row=[+" . $key_field . "+]	\"><img src=\"media/style/{$manager_theme}images/tree/application_pdf.png\"  align=\"absmiddle\" alt=\"PDF export\" /></a>";
+	}
+	if (!(isset($dbConfig['settings']['hide_delete']) && $dbConfig['settings']['hide_delete'])) {
+		$col_types[] = "template:<a href=\"#\" onClick=\"deleteRecord('[+" . $key_field . "+]')\"><img src=\"media/style/{$manager_theme}images/icons/delete.png\"  align=\"absmiddle\" alt=\"delete\" /></a>";
+	}
+    $grd->colTypes = implode('||',$col_types);
 
 	$grid_html = $grd->render();
 

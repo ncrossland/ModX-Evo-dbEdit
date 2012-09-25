@@ -35,9 +35,9 @@ $manager_theme = $modx->config['manager_theme'].'/';
 	$db_id = isset($_REQUEST['db'])? (int)$_REQUEST['db'] : null;
 
 	//add language stuff
-	include_once "lang/english.dbe.inc.php";
+	include_once ($basePath.$mod_path."/lang/english.dbe.inc.php");
 	if($manager_language!="english" && !empty($manager_language)) {
-		include_once "lang/".$manager_language.".dbe.inc.php";
+		include_once ($basePath.$mod_path."/lang/".$manager_language.".dbe.inc.php");
 	}
 
 	$dbConfig='';
@@ -174,7 +174,7 @@ $manager_theme = $modx->config['manager_theme'].'/';
 		for ($i = 0; $i < $columns; $i++) {
 			$fldName = mysql_field_name($flds, $i);
 			$tblInfo[$fldName]['dbtype'] = mysql_field_type($flds, $i);
-	   	$tblInfo[$fldName]['type'] = ( isset($dbConfig['fieldTypes'][$fldName]) )?$dbConfig['fieldTypes'][$fldName]:$tblInfo[$fldName]['dbtype'];
+			$tblInfo[$fldName]['type'] = ( isset($dbConfig['fieldTypes'][$fldName]) )?$dbConfig['fieldTypes'][$fldName]:$tblInfo[$fldName]['dbtype'];
 			$tblInfo[$fldName]['len'] = mysql_field_len($flds, $i);
 			$flags = mysql_field_flags($flds, $i);
 			$tblInfo[$fldName]['flags'] = $expand? explode(' ',$flags):$flags;

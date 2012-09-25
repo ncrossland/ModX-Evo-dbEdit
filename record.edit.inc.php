@@ -193,8 +193,9 @@ if(IN_MANAGER_MODE!="true") die("<b>INCLUDE_ORDERING_ERROR</b><br /><br />Please
 			  type="select@VALUES Three==3||Two==2||One==1";
 
 		  With bindings you must ensure the data type of the values corresponds to the mysql data type.
-		*/
-		switch(trim(strtolower($type))){
+        */
+	if (!(isset($dbConfig['settings']['view_only']) && $dbConfig['settings']['view_only'])) {
+        switch(trim(strtolower($type))){
 			case "textarea":
 				$tableRows .= "<textarea cols=\"60\" rows=\"10\" name=\"fld_".$fld."\">".$row[$fld]."</textarea>";
 				break;
@@ -294,8 +295,11 @@ if(IN_MANAGER_MODE!="true") die("<b>INCLUDE_ORDERING_ERROR</b><br /><br />Please
 		}
 		if($jsEvent) $tableRows .= "<span style=\"color:red;font-weight:bold;\" id=\"response_$fld\"></span>\n";
 		unset($jsEvent);
-		$tableRows .= "</td>\n</tr>\n";
-	}//foreach
+	} else { // view only
+		$tableRows .= "<div>" . $row[$fld] . "</div>";
+	}
+        $tableRows .= "</td>\n</tr>\n";
+    }//foreach
 
 ?>
 <script language="JavaScript">
@@ -333,20 +337,24 @@ if($date_script){
 <h1><?php echo $mod_name; ?></h1>
 <div id="actions">
 	<ul class="actionButtons">
-		<li id="Button1">
-			<a onclick="documentDirty=false; document.mutate.save.click();">
-			<img src="media/style/<?php echo $manager_theme; ?>images/icons/save.png" align="absmiddle">&nbsp;Save</a>
-			<span class="and"> + </span>
-			<select id="stay" name="stay">
-	    		<option id="stay1" value="1" <?php echo $_REQUEST['stay']=='1' ? ' selected=""' : ''?> ><?php echo $_lang['stay_new']?></option>
-	    		<option id="stay2" value="2" <?php echo $_REQUEST['stay']=='2' ? ' selected="selected"' : ''?> ><?php echo $_lang['stay']?></option>
-	    		<option id="stay3" value=""  <?php echo $_REQUEST['stay']=='' ? ' selected=""' : ''?>  ><?php echo $_lang['close']?></option>
-    		</select>
-		</li>
-		<li id="Button2">
-			<a onclick="deleteRecord();">
-			<img src="media/style/<?php echo $manager_theme; ?>images/icons/delete.gif" align="absmiddle">&nbsp;Delete</a>
-		</li>
+		<?php if (!(isset($dbConfig['settings']['view_only']) && $dbConfig['settings']['view_only'])) { ?>
+
+			<li id="Button1">
+				<a onclick="documentDirty=false; document.mutate.save.click();">
+					<img src="media/style/<?php echo $manager_theme; ?>images/icons/save.png" align="absmiddle">&nbsp;Save</a>
+				<span class="and"> + </span>
+				<select id="stay" name="stay">
+					<option id="stay1" value="1" <?php echo $_REQUEST['stay'] == '1' ? ' selected=""' : '' ?> ><?php echo $_lang['stay_new'] ?></option>
+					<option id="stay2" value="2" <?php echo $_REQUEST['stay'] == '2' ? ' selected="selected"' : '' ?> ><?php echo $_lang['stay'] ?></option>
+					<option id="stay3" value=""  <?php echo $_REQUEST['stay'] == '' ? ' selected=""' : '' ?>  ><?php echo $_lang['close'] ?></option>
+				</select>
+			</li>
+			<li id="Button2">
+				<a onclick="deleteRecord();">
+					<img src="media/style/<?php echo $manager_theme; ?>images/icons/delete.gif" align="absmiddle">&nbsp;Delete</a>
+			</li>
+		<?php } ?>
+
 		<li id="Button3">
 			<a onclick="cancelEdit();">
 			<img src="media/style/<?php echo $manager_theme; ?>images/icons/cancel.png" align="absmiddle">&nbsp;Cancel</a>
@@ -354,7 +362,7 @@ if($date_script){
 	</ul>
 </div>
 <br />
-<div class="sectionHeader">Edit Record</div>
+<div class="sectionHeader"><?php if (!(isset($dbConfig['settings']['view_only']) && $dbConfig['settings']['view_only'])) { ?>Edit<?php } else { ?>View<?php } ?> Record</div>
 <div class="sectionBody">
 <?php
 	if( isset($_SESSION['dbedit_message'])){
