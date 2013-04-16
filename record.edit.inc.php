@@ -375,7 +375,7 @@ if($date_script){
 .db-edit-table th{ width:150px; text-align:left; font-size:12px;}
 .db-edit-table td{ text-align:left; font-size:12px;}
 .db-edit-table input{font-size:12px;}
-.db-edit-table th, #db-edit-table td{ border-bottom:1px solid #ccf; padding: 2px; }
+			.db-edit-table th, .db-edit-table td{ border-bottom:1px solid #ccf; padding: 2px; }
 </style>
 <table  class="db-edit-table">
 <?php echo $tableRows; ?>
