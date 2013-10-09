@@ -327,7 +327,7 @@ if($date_script){
 <?php
 }
 ?>
-<form name="mutate" method="post" action="index.php">
+<form name="mutate" method="post" action="index.php?id=<?php echo $module_id; ?>">
 <input type="hidden" name="a" value="<?php echo $_REQUEST['a']; ?>">
 <input type="hidden" name="id" value="<?php echo $module_id; ?>">
 <input type="hidden" name="rn" value="<?php echo $rn; ?>">

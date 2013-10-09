@@ -64,7 +64,7 @@ foreach($dbConfig['fields'] as $fldname => $props){
 		}
 	}
 	</script>
-	<form name="mutate" id="mutate" method="post" action="index.php">
+	<form name="mutate" id="mutate" method="post" action="index.php?id=<?php echo $module_id; ?>">
 	<input type="hidden" name="a" value="<?php echo $_REQUEST['a']; ?>">
 	<input type="hidden" name="id" value="<?php echo $module_id; ?>">
 	<input type="hidden" name="db" value="<?php echo $db_id; ?>">
