@@ -342,7 +342,7 @@ if($date_script){
 			<li id="Button1">
 				<a onclick="documentDirty=false; document.mutate.save.click();">
 					<img src="media/style/<?php echo $manager_theme; ?>images/icons/save.png" align="absmiddle">&nbsp;Save</a>
-				<span class="and"> + </span>
+				<span class="plus"> + </span>
 				<select id="stay" name="stay">
 					<option id="stay1" value="1" <?php echo $_REQUEST['stay'] == '1' ? ' selected=""' : '' ?> ><?php echo $_lang['stay_new'] ?></option>
 					<option id="stay2" value="2" <?php echo $_REQUEST['stay'] == '2' ? ' selected="selected"' : '' ?> ><?php echo $_lang['stay'] ?></option>
