@@ -39,7 +39,7 @@ if(IN_MANAGER_MODE!="true") die("<b>INCLUDE_ORDERING_ERROR</b><br /><br />Please
 								lastSrcImage = imgSrc;
 								var w = screen.width * 0.7;
 								var h = screen.height * 0.7;
-								OpenServerBrowser('".$base_url."manager/media/browser/mcpuk/browser.html?Type=images&Connector=".$base_url."manager/media/browser/mcpuk/connectors/php/connector.php&ServerPath=".$base_url."', w, h);
+								OpenServerBrowser('".$base_url."manager/media/browser/mcpuk/browser.html?Type=images&Connector=".$base_url."manager/media/browser/mcpuk/connectors/php/connector.php&ServerPath=".$base_url. "', w, h);
 							}
 
 							//callback function for image browser
@@ -55,9 +55,9 @@ if(IN_MANAGER_MODE!="true") die("<b>INCLUDE_ORDERING_ERROR</b><br /><br />Please
 								var v = document.mutate[valueCtrl];
 								if(v){
 									p = v.value.lastIndexOf('/')+1;
-									var path = v.value.substring(0,p)
-									var filename = v.value.substring(p)
-									 url = '".$base_url."' + path + '.thumb_'+filename;
+									var path = v.value.substring(0,p);
+									var filename = v.value.substring(p);
+									 url = '" .$base_url."' + path + '.thumb_'+filename;
 								}else return;
 
 								var i = document.images[ImageCtrl];
@@ -153,7 +153,7 @@ if(IN_MANAGER_MODE!="true") die("<b>INCLUDE_ORDERING_ERROR</b><br /><br />Please
 				case 'SELECT':
 					$ds = $modx->db->query( 'SELECT ' . $modx->db->escape($extra) );
 					if($ds){
-						$cols = mysql_num_fields($ds); //no dbapi equivalent
+						$cols = $modx->db->numFields($ds); //no dbapi equivalent
 						while( $rw = $modx->db->getRow($ds,'num') ){
 							if($cols==1) $values[$rw[0]] = $rw[0]; //overwrites duplicates
 							elseif($cols==3){
@@ -304,7 +304,7 @@ if(IN_MANAGER_MODE!="true") die("<b>INCLUDE_ORDERING_ERROR</b><br /><br />Please
 ?>
 <script language="JavaScript">
 function deleteRecord() {
-	uri = "index.php?id=" + document.mutate.id.value+ "&a=" +document.mutate.a.value+ "&db=" +document.mutate.db.value  + "&ra=delete&rn="+document.mutate.rn.value
+	uri = "index.php?id=" + document.mutate.id.value+ "&a=" +document.mutate.a.value+ "&db=" +document.mutate.db.value  + "&ra=delete&rn="+document.mutate.rn.value;
 	if(confirm("Are you sure you want to <?php echo (isset($dbConfig['deletedField']))?"move this record to the trash bin?":"permanently delete this record?"; ?>")==true) {
 		document.location.href=uri
 	}

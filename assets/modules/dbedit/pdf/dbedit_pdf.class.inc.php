@@ -15,7 +15,7 @@ class dbedit_PDF extends FPDI {
 	var $issetcolor;
 	var $leftmargin;
 
-	function dbedit_PDF($orientation = 'P', $unit = 'mm', $format = 'A4') {
+	function __construct($orientation = 'P', $unit = 'mm', $format = 'A4') {
 		$this->FPDF($orientation, $unit, $format);
 		//Initialization
 		$this->B = 0;

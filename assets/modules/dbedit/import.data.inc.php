@@ -121,14 +121,15 @@ EOD;
 
 		//try to save record
 		$sql = "{$update_string} INTO $tableName (" . $fieldString . ") VALUES(" . $valueString . ")";
-		if (empty ($modx->db->conn) || !is_resource($modx->db->conn)) {
-         $modx->db->connect();
-      }
-		if ( !$result = @ mysql_query($sql, $modx->db->conn)){
-			$errors .= "record # $lineNum: " . mysql_error()."\n";
+        if (empty ($modx->db->conn) || !is_resource($modx->db->conn)) {
+            $modx->db->connect();
+        }
+        if (!$result = $modx->db->query($sql)) {
+            $errors .= "record # $lineNum: " . $modx->db->getLastError() . "\n";
 			$errCount++;
-		}else
-			$importCount++;
+        } else {
+            $importCount++;
+        }
 	}
 
 	//report results

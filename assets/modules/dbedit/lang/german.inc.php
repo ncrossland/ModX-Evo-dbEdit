@@ -21,7 +21,7 @@ $_lang['dbe_import_data'] = 'Daten importieren';
 $_lang['dbe_import_intro'] = 'Here you can import data into your database table. Currently only comma separated values (CSV) are supported. Only unique rows are imported. (i.e. If a row already exists it will not be overwritten)';
 $_lang['dbe_import_fieldlist_help'] = 'You can use the field list below to match database field names with csv column numbers. If you have less columns in your CSV data then the fields listed you should skip the missing fields by setting them to \'0\'. Be carefull not to have duplicate numbers!';
 $_lang['dbe_import_settings'] = 'Import Settings';
-$_lang['dbe_import_hasheader'] = 'Erste Zeile enthält die Feldnamen</strong><br /><em style="font-size:85%;">(Momentan noch nicht benutzt)</em>';
+$_lang['dbe_import_hasheader'] = 'Erste Zeile enth‰lt die Feldnamen</strong><br /><em style="font-size:85%;">(Momentan noch nicht benutzt)</em>';
 $_lang['dbe_import_purge'] = '<strong>Tabelle vor dem Import Leeren?</strong><br /><em style="font-size:85%;">(Momentan noch umgesetzt)</em>';
 $_lang['dbe_import_fieldlist'] = '<strong>Feldliste</strong>';
 $_lang['dbe_import_type'] = 'Import type: <em style="font-size:85%;">(This setting is currently ignored.)</em>';

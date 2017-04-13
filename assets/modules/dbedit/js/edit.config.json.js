@@ -26,7 +26,7 @@
 			}
 			$('wait-for-me').getFirst('img').dispose();
 			$('wait-for-me').getFirst('span').removeClass('waiting').set({'html':'Fill in the table name to expose its properties below.'});
-		}
+		};
 
 /**
  *
@@ -37,11 +37,11 @@ function ajaxLoadConfig(el){
 	tablename= (el)?el.getProperty('value'):false;
 	if(dbObject) dbObject.reset();
 	if(!DBEDIT_DB_ID && !DBEDIT_TABLE_NAME && !tablename) return;
-	if(DBEDIT_DB_ID) q = '&db='+DBEDIT_DB_ID
-	else q = (tablename) ? '&tbl='+tablename : '&tbl='+DBEDIT_TABLE_NAME
+	if(DBEDIT_DB_ID) q = '&db='+DBEDIT_DB_ID;
+	else q = (tablename) ? '&tbl='+tablename : '&tbl='+DBEDIT_TABLE_NAME;
 
 	img = new Element('img',{'src':'../assets/modules/dbedit/images/loader.gif','align':'absmiddle'});
-	$('wait-for-me').getFirst('span').set({'text':'Loading Configuration','class':'waiting'})
+	$('wait-for-me').getFirst('span').set({'text':'Loading Configuration','class':'waiting'});
 
 	img.inject($('wait-for-me'),'top');
 	var request = new Request.JSON({
@@ -191,14 +191,14 @@ dbObjectClass = new Class({
 		this.description = $('prop_description').value;
 		this.moduleName = this.title;
 		if(this.tableName.lenght==0 ){ alert('nothing to save'); return false; }
-		if(this.title.lenght < 2 ){ alert('Please provide a caption for this configuration.');return false;};
-		//grab extra fields
+        if(this.title.lenght < 2 ){ alert('Please provide a caption for this configuration.');return false;}
+        //grab extra fields
 		frm = $('form_mutate');
 		//trashField
-		trash = $('trash_field').value
+		trash = $('trash_field').value;
 		if(trash.length!=0){
 			this.deletedField = trash;
-			this.deletedValue = frm.trash_deleteVal.value
+			this.deletedValue = frm.trash_deleteVal.value;
 			this.enabledValue = frm.trash_undeleteVal.value
 		}else{
 			frm.trash_deleteVal.value='';
@@ -266,7 +266,7 @@ function setHref(lnk,q){
 	url+= (DBEDIT_TABLE_NAME) ? '&tbl='+DBEDIT_TABLE_NAME : '';
 	url+= q;
 	lnk.set({'href':url});
-};
+}
 
 function trashChange(fld){
 	f = $('trash_props');

@@ -44,9 +44,8 @@ echo $cm->render();
 		contextm.style.visibility = "visible";
 		e.cancelBubble=true;
 		return false;
-	};
-
-	function menuAction(a) {
+    }
+    function menuAction(a) {
 		var db = selectedItem;
 		switch(a) {
 			case 1:		// run module
@@ -60,7 +59,7 @@ echo $cm->render();
 				uri = 'index.php?a=112&dba=112&id='+THIS_MOD_ID+"&db="+db;
 				//window.location.href=uri;
 				//alert(uri);
-				window.location.href=uri
+				window.location.href=uri;
 				break;
 			case 4:		// delete
 				if( confirm("Are you sure you want to remove this table?\n (This does NOT delete any data from your database. \nIt only removes the configuration from this module.)")==true) {
@@ -105,7 +104,7 @@ echo $cm->render();
 			"FROM ".$modx->getFullTableName($dbe_config_table)." ".
 			(!empty($sqlQuery) ? " WHERE (name LIKE '%$sqlQuery%') OR (comment LIKE '%$sqlQuery%')":"")." ".
 			"ORDER BY name";
-	$ds = mysql_query($sql);
+    $ds = $modx->db->query($sql);
 	include_once $base_path."manager/includes/controls/datagrid.class.php";
 	$grd = new DataGrid('',$ds,15); // set page size to 0 t show all items
 	$grd->noRecordMsg = $_lang["no_records_found"];

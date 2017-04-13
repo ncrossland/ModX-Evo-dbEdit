@@ -15,13 +15,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html charset="utf-8" />
-	<title>MODx dbEdit -€“ <?php echo $mod_name; ?></title>
+	<title>MODx dbEdit - <?php echo $mod_name; ?></title>
 	<link rel="stylesheet" type="text/css" href="<?php echo $site_url; ?>manager/media/style/<?php echo $manager_theme ? "$manager_theme":""; ?>style.css" />
 	<?php include(dirname(__FILE__).'/styles.inc.php'); ?>
-	<script type="text/javascript" src="<?php echo $site_url; ?>/assets/modules/dbedit/js/mootools_1_2.js"></script>
-	<script type="text/javascript" src="<?php echo $site_url; ?>/assets/modules/dbedit/js/edit.config.json.js" ></script>
+	<script type="text/javascript" src="<?php echo $base_url . $mod_path; ?>js/mootools_1_2.js"></script>
+	<script type="text/javascript" src="<?php echo $base_url . $mod_path; ?>js/edit.config.json.js" ></script>
 	<script type="text/javascript">
-	var DBEDIT_DB_ID = <?php echo $db_id?$db_id:"''"; ?>;
+    var DBEDIT_DB_ID = <?php echo $db_id ? $db_id : "''"; ?>;
 	var DBEDIT_TABLE_NAME = '<?php echo $modx->db->escape($_REQUEST["tbl"]); ?>';
 	var DBEDIT_MODULE_URL = '<?php echo $moduleHomeUrl; ?>';
 	var MODULE_ID = <?php echo $module_id; ?>;
@@ -36,7 +36,7 @@ print "
 ";
 }
 ?>
-		if(DBEDIT_DB_ID) ajaxLoadConfig();
+		if(DBEDIT_DB_ID) { ajaxLoadConfig(); }
 	});
 	</script>
 </head>
@@ -57,8 +57,8 @@ span.waiting{ color:#4D6029; font-size:80%;}
 <div id="actions">
 	<ul class="actionButtons">
 		<li id="Button1">
-			<a onClick="if(dbObject){dbObject.submitData()};return false;"><img src="media/style/<?php echo $manager_theme; ?>images/icons/save.png" align="absmiddle">&nbsp;Save</a>
-		</li>
+            <a onClick="if(dbObject){dbObject.submitData()}return false;"><img src="media/style/<?php echo $manager_theme; ?>images/icons/save.png" align="absmiddle">&nbsp;Save</a>
+        </li>
 		<li id="Button2">
 			<a href="<?php echo $moduleHomeUrl; ?>"><img src="media/style/<?php echo $manager_theme; ?>images/icons/cancel.png" align="absmiddle">&nbsp;Cancel</a>
 		</li>
@@ -79,7 +79,7 @@ EOFD;
 ?>
 <div id="error-reponse"></div>
 <!-- FORM -->
-<p><img src="<?php echo $site_url; ?>/assets/modules/dbedit/images/db.gif" align="absmiddle" alt="dBedit" title="" width='32' height='32' />&nbsp; Here you can add a new configuration to manage a database table. The database table must already exists and be accessible by ModX. </p>
+<p><img src="<?php echo $base_url . $mod_path; ?>images/db.gif" align="absmiddle" alt="dBedit" title="" width='32' height='32' />&nbsp; Here you can add a new configuration to manage a database table. The database table must already exists and be accessible by ModX. </p>
 <br />
 <form name="mutate" id="form_mutate" method="POST" action="index.php?a=112&dba=<?php echo $dba==107?'109':'110'; ?>&id=<?php echo $module_id; ?>">
 <input type="hidden" name="json_data" id="json_data" value="" />
@@ -230,4 +230,5 @@ if( $dba==107 ){
 </form>
 </div>
 </div>
-
+</body>
+</html>

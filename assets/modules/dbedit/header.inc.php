@@ -18,8 +18,7 @@ if(IN_MANAGER_MODE!="true") die("<b>INCLUDE_ORDERING_ERROR</b><br /><br />Please
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $modx_charset; ?>" />
 	<link rel="stylesheet" type="text/css" href="media/style/<?php echo $manager_theme; ?>style.css" />
 	<?php include(dirname(__FILE__).'/styles.inc.php'); ?>
-	<script  type="text/javascript" src="<?php echo $site_url; ?>assets/modules/dbedit/js/mootools_1_2.js" type="text/javascript"></script>
-	<script src="media/script/mootools/moodx.js" type="text/javascript"></script>
-
+	<script  type="text/javascript" src="<?php echo $base_url . $mod_path; ?>js/mootools_1_2.js" type="text/javascript"></script>
+	<script src="<?php echo $base_url . $mod_path; ?>js/moodx.js" type="text/javascript"></script>
 </head>
 <body>

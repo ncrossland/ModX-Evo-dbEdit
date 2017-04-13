@@ -72,7 +72,7 @@ if(IN_MANAGER_MODE!="true") die("<b>INCLUDE_ORDERING_ERROR</b><br /><br />Please
 				$col_headers[]= ucwords(str_replace('_',' ',$cval));
 				$select_fields[$cval] = ucwords(str_replace('_',' ',$cval));
 			}
-			@mysql_data_seek($ds,0); //reset to first row
+			@mysqli_data_seek($ds,0); //reset to first row
 		}
 	}else{ //Build resource from dbedit configuration
 		//prepare datagrid properties

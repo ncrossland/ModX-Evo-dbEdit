@@ -164,22 +164,27 @@ $manager_theme = $modx->config['manager_theme'].'/';
 ****************************************/
 
 	//get table info from config or mysql table
-	function getTableInfo(&$modx,$dbConfig,$expand=false){
-		if(empty($modx->db->conn)||!is_resource($modx->db->conn)) { $modx->db->connect(); }
-		$dbname = str_replace("`",'',$modx->db->config['dbase']); //remove backticks if any
-		//check if table exists
-		if( !tableExists($dbConfig['tableName']) ) return null;
-		$flds = mysql_list_fields($dbname, $dbConfig['tableName'], $modx->db->conn);
-		$columns = mysql_num_fields($flds);
-		for ($i = 0; $i < $columns; $i++) {
-			$fldName = mysql_field_name($flds, $i);
-			$tblInfo[$fldName]['dbtype'] = mysql_field_type($flds, $i);
-			$tblInfo[$fldName]['type'] = ( isset($dbConfig['fieldTypes'][$fldName]) )?$dbConfig['fieldTypes'][$fldName]:$tblInfo[$fldName]['dbtype'];
-			$tblInfo[$fldName]['len'] = mysql_field_len($flds, $i);
-			$flags = mysql_field_flags($flds, $i);
-			$tblInfo[$fldName]['flags'] = $expand? explode(' ',$flags):$flags;
-		}
-		return $tblInfo;
+    function getTableInfo(&$modx, $dbConfig, $expand = false) {
+        if (empty($modx->db->conn) || !is_resource($modx->db->conn)) {
+            $modx->db->connect();
+        }
+        //check if table exists
+        if (!tableExists($dbConfig['tableName'])) {
+            return null;
+        }
+        /** @var  $rs */
+        $rs = $modx->db->query('SELECT * FROM ' . $dbConfig['tableName']);
+        $columns_total = $modx->db->numFields($rs);
+        $tblInfo = array();
+        for ($i = 0; $i < $columns_total; $i++) {
+            $finfo = $rs->fetch_field_direct($i);
+            $fldName = $finfo->name;
+            $tblInfo[$fldName]['dbtype'] = $finfo->type;
+            $tblInfo[$fldName]['type'] = (isset($dbConfig['fieldTypes'][$fldName])) ? $dbConfig['fieldTypes'][$fldName] : $finfo->type;
+            $tblInfo[$fldName]['len'] = $finfo->lenght;
+            $tblInfo[$fldName]['flags'] = $expand ? explode(' ', $finfo->flags) : $finfo->flags;
+        }
+        return $tblInfo;
 	}
 
 	function getStoredConfig($db_id){
@@ -201,8 +206,9 @@ $manager_theme = $modx->config['manager_theme'].'/';
 	function listTables(){
 		global $modx;
 		$dbase = str_replace('`','',$modx->db->config['dbase']);
-		$mysql_version = explode('.',mysql_get_client_info());
+		$mysql_version = explode('.',mysqli_get_client_info());
 		$prefix = $modx->db->config['table_prefix'];
+		$prefix = 'test';
 		$l = strlen($prefix);
 		//create list of tables without the modx prefix.
 		$sql  = "SHOW TABLES FROM `{$dbase}`";
