@@ -11,7 +11,7 @@ Installation:
 --------------------------------------------------------------------------------
 1. Upload the folder *assets/modules/dbedit* in the corresponding folder in your installation.
 2. Create a new module. Give it a name such as "dbEdit" (this is what will appear in the menu under "Modules").
-3. Copy the contents of dbedit.module.php.txt to the Module Code box
+3. Copy the contents of *install/assets/modules/dbedit.tpl* to the Module Code box
 4. Copy the following line into the Module Configuration box on the Configuration tab:
 
 ```
