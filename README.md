@@ -1,4 +1,4 @@
-#THIS PROJECT IS DEPRECATED
+# THIS PROJECT IS DEPRECATED
 
 dbEdit is not maintained anymore. It maybe does not work in Evolution 1.1 anymore. Please fork it and bring it back to life, if you need it.
 
@@ -27,7 +27,7 @@ Advanced Settings:
 
 Currently there are only six built-in advanced setting:
 
-###select_sql
+### select_sql
 
 Instead of the 'list' checkboxes you can use an SQL statement for the main records list. Field (or alias) names will be used for the column headings with underscores translated to spaces. 
 
@@ -36,7 +36,7 @@ To be able to use the record filter with select_sql there are a couple of 'place
 - {FILTER} will be replaced with the record search terms. This uses the sql HAVING statement.	
 - {WHERE} will be replaced with the WHERE clause build from the deleted_field & filter values as set in the table configuration. dbEdit is clever enough to detect if you already have a WHERE and/or HAVING clause in your sql
 		
-####Examples for select_sql: 
+#### Examples for select_sql: 
 
 ```
 SELECT t1.recid, concat(name,' - ',category) as product_title,description FROM `products` as t1 INNER JOIN (categories as t2) ON (t1.cat_id=t2.recid) {WHERE} {FILTER} ORDER BY category ASC, name ASC`
@@ -52,23 +52,23 @@ with a filter this would result in
 SELECT recid, name, description FROM `products` WHERE cat_id=122 AND deleted='0' HAVING name LIKE '%jacket%'
 ```
 		
-###hide_add
+### hide_add
 
 If set to true, this will hide the "New Record" button. 	
 
-###hide_export
+### hide_export
 
 If set to true, this will hide the "CSV Export" button. 	
 
-###hide_delete
+### hide_delete
 
 If set to true, this will hide the "Delete" button.
 
-###view_only
+### view_only
 
 If set to true, open the Record window in view only mode.
 
-###pdf_export
+### pdf_export
 
 If set to true, add a PDF export button for each row.
        
